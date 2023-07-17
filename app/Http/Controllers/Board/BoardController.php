@@ -7,11 +7,6 @@ use Illuminate\Http\Request;
 use Auth;
 use Hash;
 use App\Models\User;
-use App\Models\Service;
-use App\Models\Project;
-use App\Models\Product;
-use App\Models\Review;
-use App\Models\Offer;
 
 use App\Http\Requests\Board\UpdateProfileRequest;
 use App\Http\Requests\Board\UpdatePasswordRequest;
@@ -22,11 +17,8 @@ class BoardController extends Controller
      */
     public function index()
     {
-        $products_count = Product::count();
-        $services_count = Service::count();
-        $projects_count = Project::count();
-        $offers_count = Offer::count();
-        return view('board.index' , compact('products_count' , 'offers_count' , 'projects_count' , 'services_count' ) );
+       
+        return view('board.index');
     }
 
     public function logout() {

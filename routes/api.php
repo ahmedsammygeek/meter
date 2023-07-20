@@ -29,6 +29,7 @@ Route::group(['prefix' => 'v1'], function() {
        Route::get('/home' , [HomeController::class , 'index'] );
        Route::get('/dropdowns' , [HomeController::class , 'dropdowns'] );
        Route::post('/field_surveys' , [HomeController::class , 'field_surveys'] );
+       Route::post('/meter_replacements' , [HomeController::class , 'meter_replacements'] );
 
     });
 

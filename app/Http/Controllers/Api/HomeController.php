@@ -5,17 +5,21 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
-use App\Models\UserTask;
 use Carbon\Carbon;
-use App\Http\Resources\Api\Home\UserTasksResource;
-use App\Http\Resources\Api\Home\UserDistrictResource;
+
 use App\Models\SegmentType;
 use App\Models\PropertyType;
 use App\Models\MeterType;
 use App\Models\UserDistrict;
-use App\Http\Requests\Api\FieldSurveyRequest;
 use App\Models\FieldSurvey;
 use App\Models\FieldSurveyFile;
+use App\Models\UserTask;
+use App\Models\MeterReplacement;
+use App\Models\MeterReplacementFile;
+use App\Http\Requests\Api\FieldSurveyRequest;
+use App\Http\Requests\Api\StoreMeterReplacementRequest;
+use App\Http\Resources\Api\Home\UserTasksResource;
+use App\Http\Resources\Api\Home\UserDistrictResource;
 class HomeController extends Controller
 {
 
@@ -86,6 +90,39 @@ class HomeController extends Controller
             'data' => (object)[] , 
             'errors' => [] , 
         ],200);
+    }
+
+
+    public function meter_replacements(StoreMeterReplacementRequest $request)
+    {
+        $MeterReplacement = new MeterReplacement;
+        $MeterReplacement->latitude = $request->latitude;
+        $MeterReplacement->longitude = $request->longitude;
+        $MeterReplacement->district_id = $request->district_id;
+        $MeterReplacement->segment_number = $request->segment_number;
+        $MeterReplacement->status = $request->status;
+        $MeterReplacement->old_meter_number = $request->old_meter_number;
+        $MeterReplacement->old_meter_read = $request->old_meter_read;
+        $MeterReplacement->new_meter_number = $request->new_meter_number;
+        $MeterReplacement->new_meter_read = $request->new_meter_read;
+        $MeterReplacement->new_meter_company_id = $request->new_meter_company_id;
+        $MeterReplacement->comments = $request->comments;
+        $MeterReplacement->user_id = Auth::id();
+        $MeterReplacement->save();
+
+
+        if ($request->hasFile('files')) {
+            $files = [];
+            for ($i=0; $i <count($request->file('files')) ; $i++) { 
+                $files[] = new MeterReplacementFile([
+                    'file' => basename($request->file('files.'.$i)->store('meter_replacements')) , 
+                    'meter_replacement_id' => $MeterReplacement->id , 
+                ]);
+            }
+            $MeterReplacement->files()->saveMany($files);
+        }
+
+
     }
 
     

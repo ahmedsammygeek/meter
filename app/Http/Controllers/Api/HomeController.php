@@ -134,7 +134,8 @@ class HomeController extends Controller
             'data' => (object)[] , 
             'errors' => [] , 
         ],200 ,  [
-            'Content-Type' => 'gzip',
+            'Content-Type' => 'application/json;charset=UTF-8',
+            'Content-Encoding' => 'gzip', 
             'Charset' => 'utf-8' , 
         ],
         JSON_UNESCAPED_UNICODE );

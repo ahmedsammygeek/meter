@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('settings', function (Blueprint $table) {
-            $table->string('whatsapp')->nullable();
+        Schema::create('field_survey_files', function (Blueprint $table) {
+            $table->id();
+            $table->integer('field_survey_id');
+            $table->text('file');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('settings', function (Blueprint $table) {
-            $table->dropColumn('whatsapp');
-        });
+        Schema::dropIfExists('field_survey_files');
     }
 };

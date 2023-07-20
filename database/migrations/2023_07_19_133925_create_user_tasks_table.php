@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('user_tasks', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->tinyInteger('is_active');
-            $table->longText('name');
-            $table->longText('content');
-            $table->text('image');
-            $table->string('price');
-            $table->integer('rate');
-            $table->integer('discount')->nullable();
+            $table->integer('task_id');
+            $table->integer('added_by');
+            $table->integer('district_id')->nullable();
+            $table->tinyInteger('status')->comment('0 pending , 1 compelet 2 cancelled')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('user_tasks');
     }
 };

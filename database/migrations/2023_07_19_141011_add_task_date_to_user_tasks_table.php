@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('offers', function (Blueprint $table) {
-            $table->id();
-            $table->longText('name');
-            $table->longText('content');
-            $table->tinyInteger('is_active');
-            $table->integer('user_id');
-            $table->timestamps();
+        Schema::table('user_tasks', function (Blueprint $table) {
+            $table->date('task_date')->nullable();
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('offers');
+        Schema::table('user_tasks', function (Blueprint $table) {
+            $table->dropColumn('task_date');
+        });
     }
 };

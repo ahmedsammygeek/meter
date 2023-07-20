@@ -73,7 +73,7 @@ class HomeController extends Controller
             $files = [];
             for ($i=0; $i <count($request->file('files')) ; $i++) { 
                 $files[] = new FieldSurveyFile([
-                    'file' => $request->file('files.'.$i)->store('field_surveys') , 
+                    'file' => basename($request->file('files.'.$i)->store('field_surveys')) , 
                     'field_survey_id' => $FieldSurvey->id , 
                 ]);
             }

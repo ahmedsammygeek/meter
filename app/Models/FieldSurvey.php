@@ -24,7 +24,7 @@ class FieldSurvey extends Model
 
     public function files()
     {
-        return $this->belongsTo(FieldSurveyFile::class);
+        return $this->hasMany(FieldSurveyFile::class);
     }
 
 

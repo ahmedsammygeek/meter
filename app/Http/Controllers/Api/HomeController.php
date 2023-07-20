@@ -15,6 +15,7 @@ use App\Models\MeterType;
 use App\Models\UserDistrict;
 use App\Http\Requests\Api\FieldSurveyRequest;
 use App\Models\FieldSurvey;
+use App\Models\FieldSurveyFile;
 class HomeController extends Controller
 {
 
@@ -69,9 +70,22 @@ class HomeController extends Controller
         $FieldSurvey->save();
 
         if ($request->hasFile('files')) {
-            
             $files = [];
+            for ($i=0; $i <count($request->file('files')) ; $i++) { 
+                $files[] = new FieldSurveyFile([
+                    'file' => $request->file('files.'.$i)->store('field_surveys') , 
+                    'field_survey_id' => $FieldSurvey->id , 
+                ]);
+            }
+            $FieldSurvey->files()->saveMany($files);
         }
+
+        return response()->json([
+            'status' => true , 
+            'message' => 'تم إضافه المسح الميدانى بنجاح' , 
+            'data' => (object)[] , 
+            'errors' => [] , 
+        ],200);
     }
 
     

@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class FieldSurveyFile extends Model
 {
     use HasFactory;
+    protected $fillable = ['field_survey_id' , 'file' ];
 }

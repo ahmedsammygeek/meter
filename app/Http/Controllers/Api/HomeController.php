@@ -16,8 +16,11 @@ use App\Models\FieldSurveyFile;
 use App\Models\UserTask;
 use App\Models\MeterReplacement;
 use App\Models\MeterReplacementFile;
+use App\Models\OtherReplacement;
+use App\Models\OtherReplacementFile;
 use App\Http\Requests\Api\FieldSurveyRequest;
 use App\Http\Requests\Api\StoreMeterReplacementRequest;
+use App\Http\Requests\Api\StoreOtherReplacementRequest;
 use App\Http\Resources\Api\Home\UserTasksResource;
 use App\Http\Resources\Api\Home\UserDistrictResource;
 class HomeController extends Controller
@@ -123,7 +126,50 @@ class HomeController extends Controller
             $MeterReplacement->files()->saveMany($files);
         }
 
+        return response()->json([
+            'status' => true , 
+            'message' => 'تم إضافه مهمل استبدال العداد بنجاح' , 
+            'data' => (object)[] , 
+            'errors' => [] , 
+        ],200);
+    }
 
+    public function other_replacements(StoreOtherReplacementRequest $request )
+    {
+
+        $OtherReplacement = new OtherReplacement;
+        $OtherReplacement->district_id = $request->district_id;
+        $OtherReplacement->status = $request->status;
+        $OtherReplacement->longitude = $request->longitude;
+        $OtherReplacement->latitude = $request->latitude;
+        $OtherReplacement->comments = $request->comments;
+        $OtherReplacement->segment_number = $request->segment_number;
+        $OtherReplacement->current_meter_number = $request->current_meter_number;
+        $OtherReplacement->current_meter_read = $request->current_meter_read;
+        $OtherReplacement->user_id = Auth::id();
+        $OtherReplacement->save();
+
+
+
+        if ($request->hasFile('files')) {
+            $files = [];
+            for ($i=0; $i <count($request->file('files')) ; $i++) { 
+                $files[] = new OtherReplacementFile([
+                    'file' => basename($request->file('files.'.$i)->store('other_replacements')) , 
+                    'mother_replacement_id' => $OtherReplacement->id , 
+                ]);
+            }
+            $OtherReplacement->files()->saveMany($files);
+        }
+
+
+
+        return response()->json([
+            'status' => true , 
+            'message' => 'تم الاضافه  بنجاح' , 
+            'data' => (object)[] , 
+            'errors' => [] , 
+        ],200);
     }
 
     

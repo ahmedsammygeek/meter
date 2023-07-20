@@ -5,7 +5,7 @@ namespace App\Http\Requests\Api;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
-class StoreMeterReplacementRequest extends FormRequest
+class StoreOtherReplacementRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,22 +24,20 @@ class StoreMeterReplacementRequest extends FormRequest
     {
         return [
             'district_id' => 'required' , 
-            'latitude' => 'required' , 
-            'longitude' => 'required' , 
-            'segment_number' => 'required' , 
             'status' => 'required' , 
-            'old_meter_number' => 'required' , 
-            'old_meter_read' => 'required' , 
-            'new_meter_number' => 'required' , 
-            'new_meter_read' => 'nullable' , 
-            'new_meter_company_id' => 'required' , 
+            'longitude' => 'required' , 
+            'latitude' => 'required' , 
             'comments' => 'nullable' , 
-            'files' => 'nullable', 
-            'files.*' => 'image' , 
+            'segment_number' => 'required' , 
+            'current_meter_number' => 'required' , 
+            'current_meter_read' => 'required' , 
+            'files' => 'nullable' , 
+            'files.*' => 'image'
         ];
     }
 
-    public function failedValidation(Validator $validator)
+
+        public function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(response()->json([
             'status'   => false,
@@ -48,6 +46,5 @@ class StoreMeterReplacementRequest extends FormRequest
             'data' => (object)[]
         ]));
     }
-
 
 }

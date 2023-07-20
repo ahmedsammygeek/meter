@@ -37,7 +37,7 @@ class FieldSurveyRequest extends FormRequest
             'client_phone' => 'nullable' , 
             'client_national_id' => 'nullable' , 
             'files' => 'nullable' , 
-            'files.*' => 'file'
+            'files.*' => 'image'
         ];
     }
 

@@ -133,8 +133,11 @@ class HomeController extends Controller
             'message' => 'تم إضافه مهمل استبدال العداد بنجاح' , 
             'data' => (object)[] , 
             'errors' => [] , 
-        ],200 ,  ['Content-Type' => 'application/json;charset=UTF-8', 'Charset' => 'utf-8'],
-    JSON_UNESCAPED_UNICODE );
+        ],200 ,  [
+            'Content-Type' => 'gzip',
+            'Charset' => 'utf-8' , 
+        ],
+        JSON_UNESCAPED_UNICODE );
     }
 
     public function other_replacements(StoreOtherReplacementRequest $request )

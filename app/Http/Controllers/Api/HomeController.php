@@ -40,7 +40,15 @@ class HomeController extends Controller
             'data' => (object) [
                 'tasks' => UserTasksResource::collection($tasks)
             ]
-        ], 200);
+        ], 200 , 
+
+        [
+            'Content-Type' => 'application/json;charset=UTF-8',
+            'Content-Encoding' => 'gzip', 
+            'Charset' => 'utf-8' , 
+        ],
+        JSON_UNESCAPED_UNICODE
+         );
     }
 
     public function dropdowns()
@@ -95,7 +103,14 @@ class HomeController extends Controller
             'message' => 'تم إضافه المسح الميدانى بنجاح' , 
             'data' => (object)[] , 
             'errors' => [] , 
-        ],200);
+        ],200  ,
+        [
+            'Content-Type' => 'application/json;charset=UTF-8',
+            'Content-Encoding' => 'gzip', 
+            'Charset' => 'utf-8' , 
+        ],
+        JSON_UNESCAPED_UNICODE
+    );
     }
 
 
@@ -169,14 +184,17 @@ class HomeController extends Controller
             $OtherReplacement->files()->saveMany($files);
         }
 
-
-
         return response()->json([
             'status' => true , 
             'message' => 'تم الاضافه  بنجاح' , 
             'data' => (object)[] , 
             'errors' => [] , 
-        ],200);
+        ],200 , [
+            'Content-Type' => 'application/json;charset=UTF-8',
+            'Content-Encoding' => 'gzip', 
+            'Charset' => 'utf-8' , 
+        ],
+        JSON_UNESCAPED_UNICODE );
     }
 
     

@@ -45,7 +45,7 @@ class HomeController extends Controller
             'message' => '' , 
             'errors' => [] , 
             'data' => (object)[
-                'meter_companies' => MeterCompany::where('is_active' , 1 ) select('id' , 'name' )->get();
+                'meter_companies' => MeterCompany::where('is_active' , 1 ) select('id' , 'name' )->get() , 
                 'segment_types' => SegmentType::where('is_active' , 1 ) select('name' , 'id' )->get() , 
                 'property_types' => PropertyType::where('is_active' , 1 ) select('name' , 'id' )->get() , 
                 'meter_types' => MeterType::select('id'  , 'name' )->get() , 

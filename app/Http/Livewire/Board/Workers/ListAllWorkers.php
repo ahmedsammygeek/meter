@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Livewire\Board\Users;
+namespace App\Http\Livewire\Board\Workers;
 
 use Livewire\Component;
 use App\Models\User;
-class ListAllUsers extends Component
+class ListAllWorkers extends Component
 {
 
 
@@ -22,9 +22,9 @@ class ListAllUsers extends Component
     {
         $users = User::with('user')
         ->where(function($query){
-            $query->where('type'  , 1 );
+            $query->where('type' , 2 );
         })
         ->get();
-        return view('livewire.board.users.list-all-users' , compact('users'));
+        return view('livewire.board.workers.list-all-workers' , compact('users'));
     }
 }

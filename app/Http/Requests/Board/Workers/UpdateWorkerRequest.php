@@ -11,7 +11,7 @@ class UpdateWorkerRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,7 +25,7 @@ class UpdateWorkerRequest extends FormRequest
         return [
             'name' => 'required' , 
             'phone' => 'required|unique:users,phone,'.$id , 
-            'email' => 'required|email|unique:users,email,',$id , 
+            'email' => 'required|email|unique:users,email,'.$id , 
             'is_active' => 'nullable' , 
             'password' => 'nullable|confirmed'  , 
         ];

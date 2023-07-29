@@ -10,14 +10,14 @@
 					تعديل
 				</div>
 				<h2 class="page-title">
-					المشرفين
+					الموظفين
 				</h2>
 			</div>
 			<!-- Page title actions -->
 			<div class="col-auto ms-auto d-print-none">
 				<div class="btn-list">
 
-					<a href="{{ route('board.users.index') }}" class="btn btn-primary d-none d-sm-inline-block" >
+					<a href="{{ route('board.workers.index') }}" class="btn btn-primary d-none d-sm-inline-block" >
 						<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users-group" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
 							<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
 							<path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
@@ -27,7 +27,7 @@
 							<path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
 							<path d="M3 13v-1a2 2 0 0 1 2 -2h2"></path>
 						</svg>
-						عرض كافه المشرفين
+						عرض كافه الموظفين
 					</a>
 				</div>
 			</div>
@@ -39,18 +39,28 @@
 	<div class="container-xl">
 		<div class="row row-deck row-cards">
 			<div class="col-md-12">
-				<form class="card" method='POST' action='{{ route('board.users.update' , $user ) }}' >
+				<form class="card" method='POST' action='{{ route('board.workers.update' , $worker ) }}' >
 					@csrf
 					@method('PATCH')
 					<div class="card-header bg-primary">
-						<h3 class="card-title text-white"> تعديل بينات المشرف </h3>
+						<h3 class="card-title text-white"> تعديل بينات الموظف </h3>
 					</div>
 					<div class="card-body">
 						<div class="mb-3">
 							<label class="form-label required"> الاسم </label>
 							<div>
-								<input type="text" class="form-control @error('name') is-invalid @enderror " name='name' value="{{ $user->name }}" >
+								<input type="text" class="form-control @error('name') is-invalid @enderror " name='name' value="{{ $worker->name }}" >
 								@error('name')
+								<small class="form-hint text-danger"> {{ $message }} </small>
+								@enderror
+							</div>
+						</div>
+
+						<div class="mb-3">
+							<label class="form-label required"> رقم الجوال </label>
+							<div>
+								<input type="text" class="form-control @error('phone') is-invalid @enderror " name='phone' value="{{ $worker->phone }}" >
+								@error('phone')
 								<small class="form-hint text-danger"> {{ $message }} </small>
 								@enderror
 							</div>
@@ -59,7 +69,7 @@
 						<div class="mb-3">
 							<label class="form-label required"> البريد الاكترونى </label>
 							<div>
-								<input type="email" class="form-control @error('email') is-invalid @enderror " name='email' value="{{ $user->email }}" >
+								<input type="email" class="form-control @error('email') is-invalid @enderror " name='email' value="{{ $worker->email }}" >
 								@error('email')
 								<small class="form-hint text-danger"> {{ $message }} </small>
 								@enderror
@@ -67,7 +77,7 @@
 						</div>
 
 						<div class="mb-3">
-							<label class="form-label required"> كلمه المرور </label>
+							<label class="form-label "> كلمه المرور </label>
 							<div>
 								<input type="password" class="form-control @error('password') is-invalid @enderror " name='password'>
 								@error('password')
@@ -80,7 +90,7 @@
 
 
 						<div class="mb-3">
-							<label class="form-label required"> تاكيد كلمه المرور </label>
+							<label class="form-label "> تاكيد كلمه المرور </label>
 							<div>
 								<input type="password" class="form-control @error('password_confirmation') is-invalid @enderror " name='password_confirmation'  >
 								@error('password_confirmation')
@@ -94,7 +104,7 @@
 							<label class="form-label"> خصائص </label>
 							<div>
 								<label class="form-check">
-									<input class="form-check-input" name='active' type="checkbox" {{ $user->is_active == 1 ? 'checked': '' }}>
+									<input class="form-check-input" name='active' type="checkbox" {{ $worker->is_active == 1 ? 'checked': '' }}>
 									<span class="form-check-label"> السماح بدخول النظام </span>
 								</label>
 							</div>
@@ -102,7 +112,7 @@
 					</div>
 					<div class="card-footer text-end">
 						<div class='d-flex' >
-							<a href="{{ route('board.users.index') }}" class="btn btn-link"> تراجع </a>
+							<a href="{{ route('board.workers.index') }}" class="btn btn-link"> تراجع </a>
 							<button type="submit" class="btn btn-primary ms-auto"> تعديل </button>
 						</div>
 					</div>

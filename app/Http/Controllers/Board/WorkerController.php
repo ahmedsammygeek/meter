@@ -9,6 +9,7 @@ use App\Http\Requests\Board\Workers\StoreWorkerRequest;
 
 use App\Models\User;
 use Hash;
+use Auth;
 class WorkerController extends Controller
 {
     /**
@@ -16,7 +17,7 @@ class WorkerController extends Controller
      */
     public function index()
     {
-        //
+        return view('board.workers.index');
     }
 
     /**
@@ -32,13 +33,15 @@ class WorkerController extends Controller
      */
     public function store(StoreWorkerRequest $request)
     {
-        $user = new User;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->phone = $request->phone;
-        $user->password = Hash::make($request->password);
-        $user->type = 2;
-        $user->save();
+        $worker = new User;
+        $worker->name = $request->name;
+        $worker->email = $request->email;
+        $worker->phone = $request->phone;
+        $worker->password = Hash::make($request->password);
+        $worker->type = 2;
+        $worker->user_id = Auth::id();
+        $worker->is_active = $request->filled('active') ? 1 : 0;
+        $worker->save();
         return redirect(route('board.workers.index'))->with('success' , 'تم إاضهف الموظف بنجاح' );
     }
 
@@ -53,17 +56,25 @@ class WorkerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $worker)
     {
-        //
+        return view('board.workers.edit' , compact('worker') );
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateWorkerRequest $request,User $worker)
     {
-        //
+        $worker->name = $request->name;
+        $worker->email = $request->email;
+        $worker->phone = $request->phone;
+        if ($request->filled('password')) {
+            $worker->password = Hash::make($request->password);
+        }
+        $worker->is_active = $request->filled('active') ? 1 : 0;
+        $worker->save();
+        return redirect(route('board.workers.index'))->with('success' , 'تم تعديل بيانات الموظف بنجاح' );
     }
 
     /**

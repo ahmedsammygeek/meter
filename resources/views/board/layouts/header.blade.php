@@ -35,7 +35,6 @@
             <a href="{{ route('board.profile.show') }}" class="dropdown-item"> الملف الشخصى </a>
             <a href="{{ route('board.password.show') }}" class="dropdown-item">تعديل كلمه المرور</a>
             <div class="dropdown-divider"></div>
-            <a href="{{ route('board.settings.edit') }}" class="dropdown-item">الاعدادات</a>
             <a href="{{ route('board.logout') }}" class="dropdown-item"> تسجيل الخروج </a>
           </div>
         </div>
@@ -75,26 +74,6 @@
               </span>
             </a>
           </li>
-
-          <li class="nav-item ">
-            <a class="nav-link" href="{{ route('board.settings.edit') }}" >
-              <span class="nav-link-icon d-md-none d-lg-inline-block">
-               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-settings-code" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                 <path d="M11.482 20.924a1.666 1.666 0 0 1 -1.157 -1.241a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.312 .318 1.644 1.794 .995 2.697"></path>
-                 <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"></path>
-                 <path d="M20 21l2 -2l-2 -2"></path>
-                 <path d="M17 17l-2 2l2 2"></path>
-               </svg>
-             </span>
-             <span class="nav-link-title">
-              الاعدادات
-            </span>
-          </a>
-        </li>
-
-
-
       </ul>
 
     </div>

@@ -5,6 +5,7 @@ use App\Http\Controllers\Board\UserController;
 use App\Http\Controllers\Board\SettingsController;
 use App\Http\Controllers\Board\LoginController;
 use App\Http\Controllers\Board\BoardController;
+use App\Http\Controllers\Board\WorkerController;
 
 
 
@@ -20,6 +21,7 @@ Route::group(['prefix' => 'Board' , 'as' => 'board.' , 'middleware' => 'admin' ]
 	Route::get('/' , [BoardController::class , 'index'] )->name('index');
 	Route::get('/logout' , [BoardController::class , 'logout'] )->name('logout');
 	Route::resource('users', UserController::class );
+	Route::resource('workers', WorkerController::class );
 	Route::get('settings/edit'  , [SettingsController::class , 'edit'] )->name('settings.edit');
 	Route::patch('settings'  , [SettingsController::class , 'update'] )->name('settings.update');
 	Route::get('/profile' , [BoardController::class , 'show_profile'] )->name('profile.show');

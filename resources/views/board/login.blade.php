@@ -14,12 +14,12 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
   <title>تسجيل الدخول</title>
   <!-- CSS files -->
-  <link href="{{ asset('board_assets/dist/css/tabler.rtl.min.css') }}" rel="stylesheet"/>
-  <link href="{{ asset('board_assets/dist/css/tabler-flags.rtl.min.css') }}" rel="stylesheet"/>
-  <link href="{{ asset('board_assets/dist/css/tabler-payments.rtl.min.css') }}" rel="stylesheet"/>
-  <link href="{{ asset('board_assets/dist/css/tabler-vendors.rtl.min.css') }}" rel="stylesheet"/>
-  <link href="{{ asset('board_assets/dist/css/demo.rtl.min.css') }}" rel="stylesheet"/>
-  <link href="{{ asset('board_assets/dist/libs/jquery-toast/dist/jquery.toast.min.css') }}" rel="stylesheet"/>
+  <link href="{{ Storage::url('board_assets/dist/css/tabler.rtl.min.css') }}" rel="stylesheet"/>
+  <link href="{{ Storage::url('board_assets/dist/css/tabler-flags.rtl.min.css') }}" rel="stylesheet"/>
+  <link href="{{ Storage::url('board_assets/dist/css/tabler-payments.rtl.min.css') }}" rel="stylesheet"/>
+  <link href="{{ Storage::url('board_assets/dist/css/tabler-vendors.rtl.min.css') }}" rel="stylesheet"/>
+  <link href="{{ Storage::url('board_assets/dist/css/demo.rtl.min.css') }}" rel="stylesheet"/>
+  <link href="{{ Storage::url('board_assets/dist/libs/jquery-toast/dist/jquery.toast.min.css') }}" rel="stylesheet"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -54,10 +54,10 @@
                 كلمه المرور
               </label>
               <div class="input-group input-group-flat">
-              <input type="password" name='password' class="form-control @error('email') is-invalid @enderror"   autocomplete="off">
-             
+                <input type="password" name='password' class="form-control @error('email') is-invalid @enderror"   autocomplete="off">
+
               </div>
-               @error('password')
+              @error('password')
               <p class='text-danger' > {{ $message }} </p> 
               @enderror
             </div>
@@ -79,12 +79,11 @@
   </div>
   <!-- Libs JS -->
   <!-- Tabler Core -->
-  <script src="{{ asset('board_assets/dist/js/tabler.min.js?1684106062') }}" defer></script>
-  <script src="{{ asset('board_assets/dist/js/demo.min.js?1684106062') }}" defer></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
- <script src="{{ asset('board_assets/dist/libs/jquery-toast/dist/jquery.toast.min.js') }}" defer></script>
- @include('board.layouts.messages')
- 
+  <script src="{{ Storage::url('board_assets/dist/js/tabler.min.js?1684106062') }}" defer></script>
+  <script src="{{ Storage::url('board_assets/dist/js/demo.min.js?1684106062') }}" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="{{ Storage::url('board_assets/dist/libs/jquery-toast/dist/jquery.toast.min.js') }}" defer></script>
+  @include('board.layouts.messages')
   @yield('scripts')
 </body>
 </html>

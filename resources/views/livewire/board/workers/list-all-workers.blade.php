@@ -7,6 +7,7 @@
                         <th> # </th>
                         <th>الاسم</th>
                         <th>البريد الاكتورنى</th>
+                        <th>رقم الجوال</th>
                         <th>تاريخ الاضافه</th>
                         <th>تم الاضافه بواسطه</th>
 
@@ -22,12 +23,13 @@
                         <td> {{ $i++ }} </td>
                         <td> {{ $user->name }} </td>
                         <td> {{ $user->email }} </td>
+                        <td> {{ $user->phone }} </td>
                         <td> {{ $user->created_at }} <span class="text-muted"> {{ $user->created_at->diffForHumans() }} </span> </td>
                         <td> {{ $user->user?->name }} </td>
 
                         <td class='row g-2 align-items-center' >
                             <div class='col-6 col-sm-4 col-md-2 col-xl-auto '>
-                                <a href="{{ route('board.users.show' , $user) }}" class="btn btn-primary w-100 btn-icon" aria-label="Facebook">
+                                <a href="{{ route('board.workers.show' , $user) }}" class="btn btn-primary w-100 btn-icon" aria-label="Facebook">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                         <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
@@ -37,7 +39,7 @@
                             </div>
 
                             <div class='col-6 col-sm-4 col-md-2 col-xl-auto '>
-                                <a href="{{ route('board.users.edit' , $user ) }}" class="btn btn-warning w-100 btn-icon" aria-label="Facebook">
+                                <a href="{{ route('board.workers.edit' , $user ) }}" class="btn btn-warning w-100 btn-icon" aria-label="Facebook">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                         <path d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3"></path>

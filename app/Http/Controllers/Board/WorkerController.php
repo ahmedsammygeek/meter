@@ -48,9 +48,10 @@ class WorkerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $worker)
     {
-        //
+        $worker->load('user');
+        return view('board.workers.show' , compact('worker') );
     }
 
     /**

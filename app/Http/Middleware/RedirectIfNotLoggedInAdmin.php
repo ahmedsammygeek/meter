@@ -18,6 +18,16 @@ class RedirectIfNotLoggedInAdmin
         if (!Auth::check()) {
             return redirect(route('board.login.form'));
         }
+
+        if (Auth::user()->active == 0 ) {
+            Auth::logout();
+            return redirect(route('board.login.form'))->with('error'  , 'غير مسموح لك بدخول النظام' );
+        }
+
+        if (Auth::user()->type != 2 ) {
+            Auth::logout();
+            return redirect(route('board.login.form'))->with('error'  , 'غير مسموح لك بدخول النظام' );
+        }
         return $next($request);
     }
 }

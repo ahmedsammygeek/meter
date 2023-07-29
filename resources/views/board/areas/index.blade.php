@@ -1,5 +1,5 @@
 @extends('board.layouts.master')
 
 @section('page_content')
-@livewire('board.workers.list-all-workers')
+@livewire('board.areas.list-all-areas')
 @endsection

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Livewire\Board\Workers;
+namespace App\Http\Livewire\Board\Areas;
 
 use Livewire\Component;
-use App\Models\User;
+use App\Models\Area;
 use Livewire\WithPagination;
-class ListAllWorkers extends Component
+class ListAllAreas extends Component
 {
     use WithPagination;
     protected $listeners = ['deleteITem'];
@@ -17,7 +17,7 @@ class ListAllWorkers extends Component
 
     public function deleteITem($itemId)
     {
-        $item = User::find($itemId);
+        $item = Area::find($itemId);
         if ($item) {
             $item->delete();
         }
@@ -35,17 +35,14 @@ class ListAllWorkers extends Component
 
     public function render()
     {
-        $users = User::with('user')
-        ->where(function($query){
-            $query->where('type' , 2 );
-        })
+        $areas = Area::with('user')
         ->when($this->search , function($query){
-            $query->where('name' , 'LIKE' , '%'.$this->search.'%' )->orWhere('phone' , 'LIKE' , '%'.$this->search.'%' )->orWhere('email' , 'LIKE' , '%'.$this->search.'%' );
+            $query->where('name' , 'LIKE' , '%'.$this->search.'%' );
         })
         ->when($this->is_active != 'all' , function($query){
             $query->where('is_active' , $this->is_active );
         })
-        ->paginate(1);
-        return view('livewire.board.workers.list-all-workers' , compact('users'));
+        ->latest()->paginate(30);
+        return view('livewire.board.areas.list-all-areas' , compact('areas'));
     }
 }

@@ -8,7 +8,7 @@
                         عرض
                     </div>
                     <h2 class="page-title">
-                        الموظفين
+                        المناطق
                     </h2>
                 </div>
                 <!-- Page title actions -->
@@ -22,13 +22,13 @@
                                 <path d="M22 19l-3 3l-3 -3"></path>
                             </svg>                       
                         </a>
-                        <a href="{{ route('board.workers.create') }}" class="btn btn-primary d-none d-sm-inline-block" >
+                        <a href="{{ route('board.areas.create') }}" class="btn btn-primary d-none d-sm-inline-block" >
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M12 5l0 14"></path>
                                 <path d="M5 12l14 0"></path>
                             </svg>
-                            إضافه موظف جديد
+                            إضافه منطقه جديد
                         </a>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                     <div class="card">
                         <div class="card-header bg-primary">
                             <h3 class="card-title text-white font-weight-bold" >
-                                عرض كافه الموظفين
+                                عرض كافه المناطق
                             </h3>
                         </div>
                         <div class="card-body">
@@ -78,9 +78,9 @@
                                     <thead>
                                         <tr>
                                             <th> # </th>
-                                            <th>الاسم</th>
-                                            <th>البريد الاكتورنى</th>
-                                            <th>رقم الجوال</th>
+                                            <th>اسم المنطقه</th>
+                                            <th> حاله المنطقه </th>
+
                                             <th>تاريخ الاضافه</th>
                                             <th>تم الاضافه بواسطه</th>
                                             <th>خيارات</th>
@@ -90,18 +90,24 @@
                                         @php
                                         $i = 1;
                                         @endphp
-                                        @foreach ($users as $user)
+                                        @foreach ($areas as $area)
                                         <tr>
                                             <td> {{ $i++ }} </td>
-                                            <td> {{ $user->name }} </td>
-                                            <td> {{ $user->email }} </td>
-                                            <td> {{ $user->phone }} </td>
-                                            <td> {{ $user->created_at }} <span class="text-muted"> {{ $user->created_at->diffForHumans() }} </span> </td>
-                                            <td> {{ $user->user?->name }} </td>
+                                            <td> {{ $area->name }} </td>
+                                            <td>
+                                                @if ($area->is_active)
+                                                <span class='badge bg-blue' > فعال </span>
+                                                @else
+                                                <span class='badge bg-red' > غير فعال </span>
+
+                                                @endif
+                                            </td>
+                                            <td> {{ $area->created_at }} <span class="text-muted"> {{ $area->created_at->diffForHumans() }} </span> </td>
+                                            <td> {{ $area->user?->name }} </td>
 
                                             <td class='row g-2 align-items-center' >
                                                 <div class='col-6 col-sm-4 col-md-2 col-xl-auto '>
-                                                    <a href="{{ route('board.workers.show' , $user) }}" class="btn btn-primary w-100 btn-icon" aria-label="Facebook">
+                                                    <a href="{{ route('board.areas.show' , $area) }}" class="btn btn-primary w-100 btn-icon" aria-label="Facebook">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                             <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
@@ -111,7 +117,7 @@
                                                 </div>
 
                                                 <div class='col-6 col-sm-4 col-md-2 col-xl-auto '>
-                                                    <a href="{{ route('board.workers.edit' , $user ) }}" class="btn btn-warning w-100 btn-icon" aria-label="Facebook">
+                                                    <a href="{{ route('board.areas.edit' , $area ) }}" class="btn btn-warning w-100 btn-icon" aria-label="Facebook">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                             <path d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3"></path>
@@ -124,7 +130,7 @@
                                                 </div>
 
                                                 <div class='col-6 col-sm-4 col-md-2 col-xl-auto '>
-                                                    <a class="btn btn-danger w-100 btn-icon" wire:click="$emit('confirmDeletion' , {{ $user->id }} )" aria-label="Facebook">
+                                                    <a class="btn btn-danger w-100 btn-icon" wire:click="$emit('confirmDeletion' , {{ $area->id }} )" aria-label="Facebook">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                             <path d="M4 7l16 0"></path>
@@ -147,7 +153,7 @@
                         <div class="card-footer d-flex align-items-center">
 
                             <ul class="pagination m-0 ms-auto">
-                                {{ $users->links() }}
+                                {{ $areas->links() }}
                             </ul>
                         </div>
 

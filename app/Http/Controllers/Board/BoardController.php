@@ -17,8 +17,9 @@ class BoardController extends Controller
      */
     public function index()
     {
-       
-        return view('board.index');
+        $users_count = User::where('type' , 1 )->count();
+        $workers_count = User::where('type' , 2 )->count();
+        return view('board.index' , compact('workers_count' , 'users_count' ) );
     }
 
     public function logout() {

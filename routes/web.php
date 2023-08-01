@@ -10,7 +10,7 @@ use App\Http\Controllers\Board\FieldSurveysController;
 use App\Http\Controllers\Board\AreaController;
 use App\Http\Controllers\Board\CityController;
 use App\Http\Controllers\Board\MeterReplacementController;
-
+use App\Http\Controllers\Board\OtherReplacmentController;
 Route::get('/' , function(){
 	return view('welcome');
 });
@@ -38,6 +38,10 @@ Route::group(['prefix' => 'Board' , 'as' => 'board.' , 'middleware' => 'admin' ]
 	Route::get('meter_replacements' , [MeterReplacementController::class , 'index'] )->name('meter_replacements.index');
 	Route::get('meter_replacements/{meter_replacement}' , [MeterReplacementController::class , 'show'] )->name('meter_replacements.show');
 	Route::get('meter_replacements/{meter_replacement}/download' , [MeterReplacementController::class , 'download'] )->name('meter_replacements.download');
+
+	Route::get('other_replacements' , [OtherReplacmentController::class , 'index'] )->name('other_replacements.index');
+	Route::get('other_replacements/{other_replacement}' , [OtherReplacmentController::class , 'show'] )->name('other_replacements.show');
+	Route::get('other_replacements/{other_replacement}/download' , [OtherReplacmentController::class , 'download'] )->name('other_replacements.download');
 });
 
 

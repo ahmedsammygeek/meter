@@ -10,14 +10,14 @@
 					عرض تفاصيل
 				</div>
 				<h2 class="page-title">
-					الموظفين
+					المسح الميدانى 
 				</h2>
 			</div>
 			<!-- Page title actions -->
 			<div class="col-auto ms-auto d-print-none">
 				<div class="btn-list">
 
-					<a href="{{ route('board.workers.index') }}" class="btn btn-primary d-none d-sm-inline-block" >
+					<a href="{{ route('board.field_surveys.index') }}" class="btn btn-primary d-none d-sm-inline-block" >
 						<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users-group" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
 							<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
 							<path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
@@ -27,7 +27,7 @@
 							<path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
 							<path d="M3 13v-1a2 2 0 0 1 2 -2h2"></path>
 						</svg>
-						عرض كافه الموظفين
+						عرض كافه مهمات  المسح الميدانى 
 					</a>
 				</div>
 			</div>
@@ -45,26 +45,122 @@
 							<tbody>
 								<tr>
 									<th> تاريخ الاضافه </th>
-									<td> {{ $worker->created_at }} <span class="text-muted"> {{ $worker->created_at->diffForHumans() }} </span> </td>
+									<td> {{ $field_survey->created_at }} <span class="text-muted"> {{ $field_survey->created_at->diffForHumans() }} </span> </td>
 								</tr>
 								<tr>
 									<th> تم الاضافه بواسطه </th>
-									<td> {{ $worker->user?->name }}  </td>
+									<td> {{ $field_survey->user?->name }}  </td>
 								</tr>
 								<tr>
 									<th> الاسم </th>
-									<td> {{ $worker->name }}  </td>
+									<td> {{ $field_survey->district?->name }}  </td>
 								</tr>
 								<tr>
-									<th> البريد الاكترونى </th>
-									<td> {{ $worker->email }} </td>
+									<th> رقم القطعه </th>
+									<td> {{ $field_survey->segment_number }} </td>
 								</tr>
 								<tr>
-									<th> رقم الجوال </th>
-									<td> {{ $worker->phone }} </td>
+									<th> نوع القطعه </th>
+									<td> {{ $field_survey->segment_type?->name }} </td>
+								</tr>
+								<tr>
+									<th> نوع العقار </th>
+									<td> {{ $field_survey->property_type?->name }} </td>
+								</tr>
+								<tr>
+									<th> نوع العداد </th>
+									<td> {{ $field_survey->meter_type?->name }} </td>
+								</tr>
+								<tr>
+									<th> رقم العدادا </th>
+									<td> {{ $field_survey->meter_number }} </td>
+								</tr>
+								<tr>
+									<th> عدد العدادات </th>
+									<td> {{ $field_survey->meters_count }} </td>
+								</tr>
+								<tr>
+									<th> اسم العميل </th>
+									<td> {{ $field_survey->client_name }} </td>
+								</tr>
+								<tr>
+									<th> جوال العميل </th>
+									<td> {{ $field_survey->client_phone }} </td>
+								</tr>
+								<tr>
+									<th> رقم هويه العميل </th>
+									<td> {{ $field_survey->client_national_id }} </td>
+								</tr>
+								<tr>
+									<th> ملاحظات </th>
+									<td> {{ $field_survey->comments }} </td>
+								</tr>
+								<tr>
+									<th> خط طول </th>
+									<td> {{ $field_survey->longitude }} </td>
+								</tr>
+								<tr>
+									<th> خط عرض </th>
+									<td> {{ $field_survey->latitude }} </td>
 								</tr>
 							</tbody>
 						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="page-body">
+	<div class="container-xl">
+		<div class="row row-deck row-cards">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<h3 class="card-title"> ملفات المسح </h3>
+						<div class="card-actions">
+							<a href="{{ route('board.field_surveys.download' , $field_survey ) }}" class="btn btn-primary">
+								<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud-download" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+									<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+									<path d="M19 18a3.5 3.5 0 0 0 0 -7h-1a5 4.5 0 0 0 -11 -2a4.6 4.4 0 0 0 -2.1 8.4"></path>
+									<path d="M12 13l0 9"></path>
+									<path d="M9 19l3 3l3 -3"></path>
+								</svg>
+								تحميل 
+							</a>
+						</div>
+					</div>
+					<div class="card-body">
+						<div id="carousel-indicators-thumb" class="carousel slide carousel-fade" data-bs-ride="carousel">
+							<div class="carousel-indicators carousel-indicators-thumb">
+								@php
+								$i = 0;
+								@endphp
+
+								@foreach ($field_survey->files as $file)
+								<button type="button" data-bs-target="#carousel-indicators-thumb" data-bs-slide-to="{{ $i }}" class=" ratio ratio-4x3 active" style="background-image: url({{ Storage::url('field_surveys/'.$file->file) }})"></button>
+								@php
+								$i++;
+								@endphp
+								@endforeach
+
+
+							</div>
+							<div class="carousel-inner">
+								@php
+								$i = 0;
+								@endphp
+								@foreach ($field_survey->files as $file)
+								<div class="carousel-item {{ $i == 0 ? 'active' : '' }}">
+									<img class="d-block w-100" alt="" src="{{ Storage::url('field_surveys/'.$file->file) }}">
+								</div>
+								@php
+								$i++;
+								@endphp
+								@endforeach
+
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

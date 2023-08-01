@@ -33,6 +33,7 @@ Route::group(['prefix' => 'Board' , 'as' => 'board.' , 'middleware' => 'admin' ]
 	Route::patch('/password' , [BoardController::class , 'update_password'] )->name('password.update');
 	Route::get('field_surveys' , [FieldSurveysController::class , 'index'] )->name('field_surveys.index');
 	Route::get('field_surveys/{field_survey}' , [FieldSurveysController::class , 'show'] )->name('field_surveys.show');
+	Route::get('field_surveys/{field_survey}/download' , [FieldSurveysController::class , 'download'] )->name('field_surveys.download');
 });
 
 

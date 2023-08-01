@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Board;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\FieldSurvey;
-use Illuminate\Support\Facades\Storage;
-use League\Flysystem\Filesystem;
-use League\Flysystem\ZipArchive\ZipArchiveAdapter;
+use File;
+use Storage;
+use ZipArchive;
 class FieldSurveysController extends Controller
 {
     /**
@@ -31,42 +31,27 @@ class FieldSurveysController extends Controller
 
     public function download(FieldSurvey $field_survey)
     {
+        $zip = new ZipArchive;
 
-        $source_disk = 's3';
-        $source_path = '';
-        $file_names = Storage::disk($source_disk)->files($source_path);
-        $zip = new Filesystem(new ZipArchiveAdapter(public_path('archive.zip')));
+        $fileName = 'my-images.zip';
 
-        foreach($field_survey->files as $file){
-            $file_content = Storage::disk($source_disk)->get('field_surveys/'.$file->file);
-            $zip->put($file_name, $file_content);
+        if ($zip->open(public_path($fileName), ZipArchive::CREATE) === TRUE) {
+
+            // $files = File::files(public_path('files'));
+            $files;
+            foreach ($field_survey->files as $file) {
+                $files[] = Storage::path('field_surveys/'.$file->file);
+            }
+
+            foreach ($files as $key => $value) {
+                $relativeNameInZipFile = basename($value);
+                $zip->addFile($value, $relativeNameInZipFile);
+            }
+
+            $zip->close();
         }
 
-        $zip->getAdapter()->getArchive()->close();
-
-        return redirect('archive.zip');
-
-        // $zip = new ZipArchive;
-
-        // $fileName = 'my-images.zip';
-
-        // if ($zip->open(public_path($fileName), ZipArchive::CREATE) === TRUE) {
-
-        //     // $files = File::files(public_path('files'));
-        //     $files;
-        //     foreach ($field_survey->files as $file) {
-        //         $files[] = Storage::path('field_surveys/'.$file->file);
-        //     }
-
-        //     foreach ($files as $key => $value) {
-        //         $relativeNameInZipFile = basename($value);
-        //         $zip->addFile($value, $relativeNameInZipFile);
-        //     }
-
-        //     $zip->close();
-        // }
-
-        // return response()->download(public_path($fileName));
+        return response()->download(public_path($fileName));
     }
 
 

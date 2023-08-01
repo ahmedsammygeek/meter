@@ -36,16 +36,16 @@ class AreaController extends Controller
         $area->user_id = Auth::id();
         $area->is_active = $request->filled('active') ? 1 : 0;
         $area->save();
-
         return redirect(route('board.areas.index'))->with('success'  , 'تم إضافه المنطقه بنجاح');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Area $area)
     {
-        //
+        $area->load('user');
+        return view('board.areas.show' , compact('area') );
     }
 
     /**

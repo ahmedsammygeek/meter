@@ -78,8 +78,9 @@
                                     <thead>
                                         <tr>
                                             <th> # </th>
-                                            <th>اسم المنطقه</th>
-                                            <th> حاله المنطقه </th>
+                                            <th>اسم المدينه</th>
+                                            <th> حاله المدينه </th>
+                                            <th> المنطقه </th>
 
                                             <th>تاريخ الاضافه</th>
                                             <th>تم الاضافه بواسطه</th>
@@ -90,24 +91,24 @@
                                         @php
                                         $i = 1;
                                         @endphp
-                                        @foreach ($areas as $area)
+                                        @foreach ($cities as $city)
                                         <tr>
                                             <td> {{ $i++ }} </td>
-                                            <td> {{ $area->name }} </td>
+                                            <td> {{ $city->name }} </td>
                                             <td>
-                                                @if ($area->is_active)
+                                                @if ($city->is_active)
                                                 <span class='badge bg-blue' > فعال </span>
                                                 @else
                                                 <span class='badge bg-red' > غير فعال </span>
-
                                                 @endif
                                             </td>
-                                            <td> {{ $area->created_at }} <span class="text-muted"> {{ $area->created_at->diffForHumans() }} </span> </td>
-                                            <td> {{ $area->user?->name }} </td>
+                                            <td> {{ $city->area?->name }} </td>
+                                            <td> {{ $city->created_at }} <span class="text-muted"> {{ $city->created_at->diffForHumans() }} </span> </td>
+                                            <td> {{ $city->user?->name }} </td>
 
                                             <td class='row g-2 align-items-center' >
                                                 <div class='col-6 col-sm-4 col-md-2 col-xl-auto '>
-                                                    <a href="{{ route('board.areas.show' , $area) }}" class="btn btn-primary w-100 btn-icon" aria-label="Facebook">
+                                                    <a href="{{ route('board.cities.show' , $city) }}" class="btn btn-primary w-100 btn-icon" aria-label="Facebook">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                             <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
@@ -117,7 +118,7 @@
                                                 </div>
 
                                                 <div class='col-6 col-sm-4 col-md-2 col-xl-auto '>
-                                                    <a href="{{ route('board.areas.edit' , $area ) }}" class="btn btn-warning w-100 btn-icon" aria-label="Facebook">
+                                                    <a href="{{ route('board.cities.edit' , $city ) }}" class="btn btn-warning w-100 btn-icon" aria-label="Facebook">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                             <path d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3"></path>
@@ -130,7 +131,7 @@
                                                 </div>
 
                                                 <div class='col-6 col-sm-4 col-md-2 col-xl-auto '>
-                                                    <a class="btn btn-danger w-100 btn-icon" wire:click="$emit('confirmDeletion' , {{ $area->id }} )" aria-label="Facebook">
+                                                    <a class="btn btn-danger w-100 btn-icon" wire:click="$emit('confirmDeletion' , {{ $city->id }} )" aria-label="Facebook">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                             <path d="M4 7l16 0"></path>
@@ -153,7 +154,7 @@
                         <div class="card-footer d-flex align-items-center">
 
                             <ul class="pagination m-0 ms-auto">
-                                {{ $areas->links() }}
+                                {{ $cities->links() }}
                             </ul>
                         </div>
 

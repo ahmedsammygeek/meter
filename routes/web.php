@@ -8,6 +8,8 @@ use App\Http\Controllers\Board\BoardController;
 use App\Http\Controllers\Board\WorkerController;
 use App\Http\Controllers\Board\FieldSurveysController;
 use App\Http\Controllers\Board\AreaController;
+use App\Http\Controllers\Board\CityController;
+
 
 Route::get('/' , function(){
 	return view('welcome');
@@ -22,13 +24,15 @@ Route::group(['prefix' => 'Board' , 'as' => 'board.' , 'middleware' => 'admin' ]
 	Route::resource('users', UserController::class );
 	Route::resource('workers', WorkerController::class );
 	Route::resource('areas', AreaController::class );
+	Route::resource('cities', CityController::class );
 	Route::get('settings/edit'  , [SettingsController::class , 'edit'] )->name('settings.edit');
 	Route::patch('settings'  , [SettingsController::class , 'update'] )->name('settings.update');
 	Route::get('/profile' , [BoardController::class , 'show_profile'] )->name('profile.show');
 	Route::patch('/profile' , [BoardController::class , 'update_profile'] )->name('profile.update');
 	Route::get('/password' , [BoardController::class , 'show_password'] )->name('password.show');
 	Route::patch('/password' , [BoardController::class , 'update_password'] )->name('password.update');
-	Route::get('field_surveys' , [FieldSurveysController::class , 'index'] );
+	Route::get('field_surveys' , [FieldSurveysController::class , 'index'] )->name('field_surveys.index');
+	Route::get('field_surveys/{field_survey}' , [FieldSurveysController::class , 'show'] )->name('field_surveys.show');
 });
 
 

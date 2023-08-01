@@ -10,14 +10,14 @@
 					عرض تفاصيل
 				</div>
 				<h2 class="page-title">
-					المناطق
+					الموظفين
 				</h2>
 			</div>
 			<!-- Page title actions -->
 			<div class="col-auto ms-auto d-print-none">
 				<div class="btn-list">
 
-					<a href="{{ route('board.areas.index') }}" class="btn btn-primary d-none d-sm-inline-block" >
+					<a href="{{ route('board.workers.index') }}" class="btn btn-primary d-none d-sm-inline-block" >
 						<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users-group" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
 							<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
 							<path d="M10 13a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
@@ -27,7 +27,7 @@
 							<path d="M5 5a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
 							<path d="M3 13v-1a2 2 0 0 1 2 -2h2"></path>
 						</svg>
-						عرض كافه المناطق
+						عرض كافه الموظفين
 					</a>
 				</div>
 			</div>
@@ -45,25 +45,23 @@
 							<tbody>
 								<tr>
 									<th> تاريخ الاضافه </th>
-									<td> {{ $area->created_at }} <span class="text-muted"> {{ $area->created_at->diffForHumans() }} </span> </td>
+									<td> {{ $worker->created_at }} <span class="text-muted"> {{ $worker->created_at->diffForHumans() }} </span> </td>
 								</tr>
 								<tr>
 									<th> تم الاضافه بواسطه </th>
-									<td> {{ $area->user?->name }}  </td>
+									<td> {{ $worker->user?->name }}  </td>
 								</tr>
 								<tr>
 									<th> الاسم </th>
-									<td> {{ $area->name }}  </td>
+									<td> {{ $worker->name }}  </td>
 								</tr>
 								<tr>
-									<th> حاله المنطقه </th>
-									<td> 
-										@if ($area->is_active)
-										<span class='badge bg-blue' > فعال </span>
-										@else
-										<span class='badge bg-red' > غير فعال </span>
-										@endif
-									</td>
+									<th> البريد الاكترونى </th>
+									<td> {{ $worker->email }} </td>
+								</tr>
+								<tr>
+									<th> رقم الجوال </th>
+									<td> {{ $worker->phone }} </td>
 								</tr>
 							</tbody>
 						</table>

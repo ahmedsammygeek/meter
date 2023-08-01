@@ -27,5 +27,21 @@ class FieldSurvey extends Model
         return $this->hasMany(FieldSurveyFile::class);
     }
 
+    public function property_type()
+    {
+        return $this->belongsTo(PropertyType::class);
+    }
+
+    public function segment_type()
+    {
+        return $this->belongsTo(SegmentType::class);
+    }
+
+
+    public function meter_type()
+    {
+        return $this->belongsTo(MeterType::class);
+    }
+
 
 }

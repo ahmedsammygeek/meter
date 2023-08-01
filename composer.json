@@ -12,6 +12,7 @@
         "laravel/tinker": "^2.8",
         "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/livewire": "^2.12",
+        "maatwebsite/excel": "^3.1",
         "mcamara/laravel-localization": "^1.8",
         "spatie/laravel-translatable": "^6.5",
         "treblle/treblle-laravel": "^4.1"

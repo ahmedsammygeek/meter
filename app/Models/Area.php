@@ -7,11 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Area extends Model
 {
-    use HasFactory;
+   use HasFactory;
 
 
-    public function user()
-    {
-       return $this->belongsTo(User::class);
-    }
+   public function user()
+   {
+      return $this->belongsTo(User::class);
+   }
+
+   public function cities()
+   {
+      return $this->hasMany(City::class);
+   }
 }

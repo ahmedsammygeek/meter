@@ -12,7 +12,7 @@ class FieldSurveysController extends Controller
      */
     public function index()
     {
-        //
+        return view('board.field_surveys.index');
     }
 
     /**

@@ -9,7 +9,7 @@ use App\Http\Controllers\Board\WorkerController;
 use App\Http\Controllers\Board\FieldSurveysController;
 use App\Http\Controllers\Board\AreaController;
 use App\Http\Controllers\Board\CityController;
-
+use App\Http\Controllers\Board\MeterReplacementController;
 
 Route::get('/' , function(){
 	return view('welcome');
@@ -34,6 +34,10 @@ Route::group(['prefix' => 'Board' , 'as' => 'board.' , 'middleware' => 'admin' ]
 	Route::get('field_surveys' , [FieldSurveysController::class , 'index'] )->name('field_surveys.index');
 	Route::get('field_surveys/{field_survey}' , [FieldSurveysController::class , 'show'] )->name('field_surveys.show');
 	Route::get('field_surveys/{field_survey}/download' , [FieldSurveysController::class , 'download'] )->name('field_surveys.download');
+
+	Route::get('meter_replacements' , [MeterReplacementController::class , 'index'] )->name('meter_replacements.index');
+	Route::get('meter_replacements/{meter_replacement}' , [MeterReplacementController::class , 'show'] )->name('meter_replacements.show');
+	Route::get('meter_replacements/{meter_replacement}/download' , [MeterReplacementController::class , 'download'] )->name('meter_replacements.download');
 });
 
 

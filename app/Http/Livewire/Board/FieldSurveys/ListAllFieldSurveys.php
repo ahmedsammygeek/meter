@@ -60,7 +60,7 @@ class ListAllFieldSurveys extends Component
 
     public function deleteITem($itemId)
     {
-        $item = User::find($itemId);
+        $item = FieldSurvey::find($itemId);
         if ($item) {
             $item->delete();
         }
@@ -132,7 +132,7 @@ class ListAllFieldSurveys extends Component
         })
         ->when($this->meter_type != 'all'  , function($query){
             $query->where('meter_type_id' , $this->meter_type );
-        });
+        })->latest();
     }
 
     public function render()

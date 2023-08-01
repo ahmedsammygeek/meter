@@ -32,8 +32,9 @@ class FieldSurveysController extends Controller
     {
 
         $zip = new ZipStream\ZipStream(
-            outputName: 'example.zip',
+            outputName: 'images.zip',
             sendHttpHeaders: true,
+            enableZip64: true,
         );
 
         foreach($field_survey->files as $file){
@@ -42,51 +43,7 @@ class FieldSurveysController extends Controller
                 data:  Storage::get('field_surveys/'.$file->file),
             );
         }
-
-
-        
         $zip->finish();
-
-
-        // return response()->streamDownload(function()  {
-
-        //     $opt = new ArchiveOptions();
-
-        //     $opt->setContentType('application/octet-stream');
-
-        //     $zip = new ZipStream("uploads.zip", $opt);
-
-
-        //     foreach ($field_survey->files as $file) {
-        //         try {
-        //             $file = Storage::readStream($file->file);
-        //             $zip->addFileFromStream($file->file, $file->file);
-        //         }
-        //         catch (Exception $e) {
-        //             \Log::error("unable to read the file at storage path: $file->file and output to zip stream. Exception is " . $e->getMessage());
-        //         }
-
-        //     }
-
-        //     $zip->finish();
-        // }, 'uploads.zip');
-
-        // $source_disk = 's3';
-        // $source_path = '';
-
-        // $file_names = Storage::disk($source_disk)->files($source_path);
-
-        // $zip = new Filesystem(new ZipArchiveAdapter(public_path('archive.zip')));
-
-        // foreach($field_survey->files as $file){
-        //     $file_content = Storage::disk($source_disk)->get('field_surveys/'.$file->file);
-        //     $zip->put($file_name, $file_content);
-        // }
-
-        // $zip->getAdapter()->getArchive()->close();
-
-        // return redirect('archive.zip');
-
     }
 
 

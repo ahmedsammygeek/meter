@@ -8,7 +8,7 @@
                         عرض
                     </div>
                     <h2 class="page-title">
-                        المدن
+                        الاحياء
                     </h2>
                 </div>
                 <!-- Page title actions -->
@@ -22,13 +22,13 @@
                                 <path d="M22 19l-3 3l-3 -3"></path>
                             </svg>                       
                         </a>
-                        <a href="{{ route('board.cities.create') }}" class="btn btn-primary d-none d-sm-inline-block" >
+                        <a href="{{ route('board.districts.create') }}" class="btn btn-primary d-none d-sm-inline-block" >
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                 <path d="M12 5l0 14"></path>
                                 <path d="M5 12l14 0"></path>
                             </svg>
-                            إضافه مدينه جديده
+                            إضافه حى جديد
                         </a>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group col-md-12">
-                                        <label class='form-label' for=""> حاله المستخدم </label>
+                                        <label class='form-label' for=""> حاله الحى </label>
                                         <select wire:model='is_active' class="form-select">
                                             <option value="all" >الجميع</option>
                                             <option value='1' > فعال </option>
@@ -69,7 +69,7 @@
                     <div class="card">
                         <div class="card-header bg-primary">
                             <h3 class="card-title text-white font-weight-bold" >
-                                عرض كافه المدن
+                                عرض كافه الاحياء
                             </h3>
                         </div>
                         <div class="card-body">
@@ -78,9 +78,9 @@
                                     <thead>
                                         <tr>
                                             <th> # </th>
-                                            <th>اسم المدينه</th>
-                                            <th> حاله المدينه </th>
-                                            <th> المنطقه </th>
+                                            <th>اسم الحى</th>
+                                            <th> حاله الحاى </th>
+                                            <th> المدينه </th>
 
                                             <th>تاريخ الاضافه</th>
                                             <th>تم الاضافه بواسطه</th>
@@ -91,24 +91,24 @@
                                         @php
                                         $i = 1;
                                         @endphp
-                                        @foreach ($cities as $city)
+                                        @foreach ($districts as $district)
                                         <tr>
                                             <td> {{ $i++ }} </td>
-                                            <td> {{ $city->name }} </td>
+                                            <td> {{ $district->name }} </td>
                                             <td>
-                                                @if ($city->is_active)
+                                                @if ($district->is_active)
                                                 <span class='badge bg-blue' > فعال </span>
                                                 @else
                                                 <span class='badge bg-red' > غير فعال </span>
                                                 @endif
                                             </td>
-                                            <td> {{ $city->area?->name }} </td>
-                                            <td> {{ $city->created_at }} <span class="text-muted"> {{ $city->created_at->diffForHumans() }} </span> </td>
-                                            <td> {{ $city->user?->name }} </td>
+                                            <td> {{ $district->city?->name }} </td>
+                                            <td> {{ $district->created_at }} <span class="text-muted"> {{ $district->created_at->diffForHumans() }} </span> </td>
+                                            <td> {{ $district->user?->name }} </td>
 
                                             <td class='row g-2 align-items-center' >
                                                 <div class='col-6 col-sm-4 col-md-2 col-xl-auto '>
-                                                    <a href="{{ route('board.cities.show' , $city) }}" class="btn btn-primary w-100 btn-icon" aria-label="Facebook">
+                                                    <a href="{{ route('board.districts.show' , $district) }}" class="btn btn-primary w-100 btn-icon" aria-label="Facebook">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                             <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
@@ -118,7 +118,7 @@
                                                 </div>
 
                                                 <div class='col-6 col-sm-4 col-md-2 col-xl-auto '>
-                                                    <a href="{{ route('board.cities.edit' , $city ) }}" class="btn btn-warning w-100 btn-icon" aria-label="Facebook">
+                                                    <a href="{{ route('board.districts.edit' , $district ) }}" class="btn btn-warning w-100 btn-icon" aria-label="Facebook">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                             <path d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3"></path>
@@ -131,7 +131,7 @@
                                                 </div>
 
                                                 <div class='col-6 col-sm-4 col-md-2 col-xl-auto '>
-                                                    <a class="btn btn-danger w-100 btn-icon" wire:click="$emit('confirmDeletion' , {{ $city->id }} )" aria-label="Facebook">
+                                                    <a class="btn btn-danger w-100 btn-icon" wire:click="$emit('confirmDeletion' , {{ $district->id }} )" aria-label="Facebook">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                             <path d="M4 7l16 0"></path>
@@ -154,7 +154,7 @@
                         <div class="card-footer d-flex align-items-center">
 
                             <ul class="pagination m-0 ms-auto">
-                                {{ $cities->links() }}
+                                {{ $districts->links() }}
                             </ul>
                         </div>
 

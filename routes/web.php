@@ -11,6 +11,7 @@ use App\Http\Controllers\Board\AreaController;
 use App\Http\Controllers\Board\CityController;
 use App\Http\Controllers\Board\MeterReplacementController;
 use App\Http\Controllers\Board\OtherReplacmentController;
+use App\Http\Controllers\Board\DistrictController;
 Route::get('/' , function(){
 	return view('welcome');
 });
@@ -25,6 +26,7 @@ Route::group(['prefix' => 'Board' , 'as' => 'board.' , 'middleware' => 'admin' ]
 	Route::resource('workers', WorkerController::class );
 	Route::resource('areas', AreaController::class );
 	Route::resource('cities', CityController::class );
+	Route::resource('districts', DistrictController::class );
 	Route::get('settings/edit'  , [SettingsController::class , 'edit'] )->name('settings.edit');
 	Route::patch('settings'  , [SettingsController::class , 'update'] )->name('settings.update');
 	Route::get('/profile' , [BoardController::class , 'show_profile'] )->name('profile.show');

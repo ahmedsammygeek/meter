@@ -100,63 +100,90 @@
                                             <td> {{ $user->user?->name }} </td>
 
                                             <td class='row g-2 align-items-center' >
+
                                                 <div class='col-6 col-sm-4 col-md-2 col-xl-auto '>
-                                                    <a href="{{ route('board.workers.show' , $user) }}" class="btn btn-primary w-100 btn-icon" aria-label="Facebook">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <a href='{{ route('board.workers.tasks.create' , $user ) }}'  class="btn btn-success w-100 btn-icon" aria-label="Facebook">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-square-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                            <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
-                                                            <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6"></path>
+                                                            <path d="M3 3m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z"></path>
+                                                            <path d="M9 12l6 0"></path>
+                                                            <path d="M12 9l0 6"></path>
                                                         </svg>
                                                     </a>
                                                 </div>
 
                                                 <div class='col-6 col-sm-4 col-md-2 col-xl-auto '>
-                                                    <a href="{{ route('board.workers.edit' , $user ) }}" class="btn btn-warning w-100 btn-icon" aria-label="Facebook">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                            <path d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3"></path>
-                                                            <path d="M4 6v6c0 1.657 3.582 3 8 3c.478 0 .947 -.016 1.402 -.046"></path>
-                                                            <path d="M20 12v-6"></path>
-                                                            <path d="M4 12v6c0 1.526 3.04 2.786 6.972 2.975"></path>
-                                                            <path d="M18.42 15.61a2.1 2.1 0 0 1 2.97 2.97l-3.39 3.42h-3v-3l3.42 -3.39z"></path>
-                                                        </svg>
-                                                    </a>
-                                                </div>
-
-                                                <div class='col-6 col-sm-4 col-md-2 col-xl-auto '>
-                                                    <a class="btn btn-danger w-100 btn-icon" wire:click="$emit('confirmDeletion' , {{ $user->id }} )" aria-label="Facebook">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                            <path d="M4 7l16 0"></path>
-                                                            <path d="M10 11l0 6"></path>
-                                                            <path d="M14 11l0 6"></path>
-                                                            <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
-                                                            <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
-                                                        </svg>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        @endforeach
+                                                    <a href='{{ route('board.workers.tasks.index' , $user ) }}'  class="btn btn-info w-100 btn-icon" aria-label="Facebook">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                         <path d="M9 6l11 0"></path>
+                                                         <path d="M9 12l11 0"></path>
+                                                         <path d="M9 18l11 0"></path>
+                                                         <path d="M5 6l0 .01"></path>
+                                                         <path d="M5 12l0 .01"></path>
+                                                         <path d="M5 18l0 .01"></path>
+                                                     </svg>
+                                                 </a>
+                                             </div>
 
 
-                                    </tbody>
-                                </table>
-                            </div>
+                                             <div class='col-6 col-sm-4 col-md-2 col-xl-auto '>
+                                                <a href="{{ route('board.workers.show' , $user) }}" class="btn btn-primary w-100 btn-icon" aria-label="Facebook">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                        <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0"></path>
+                                                        <path d="M21 12c-2.4 4 -5.4 6 -9 6c-3.6 0 -6.6 -2 -9 -6c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6"></path>
+                                                    </svg>
+                                                </a>
+                                            </div>
+
+                                            <div class='col-6 col-sm-4 col-md-2 col-xl-auto '>
+                                                <a href="{{ route('board.workers.edit' , $user ) }}" class="btn btn-warning w-100 btn-icon" aria-label="Facebook">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-database-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                        <path d="M4 6c0 1.657 3.582 3 8 3s8 -1.343 8 -3s-3.582 -3 -8 -3s-8 1.343 -8 3"></path>
+                                                        <path d="M4 6v6c0 1.657 3.582 3 8 3c.478 0 .947 -.016 1.402 -.046"></path>
+                                                        <path d="M20 12v-6"></path>
+                                                        <path d="M4 12v6c0 1.526 3.04 2.786 6.972 2.975"></path>
+                                                        <path d="M18.42 15.61a2.1 2.1 0 0 1 2.97 2.97l-3.39 3.42h-3v-3l3.42 -3.39z"></path>
+                                                    </svg>
+                                                </a>
+                                            </div>
+
+                                            <div class='col-6 col-sm-4 col-md-2 col-xl-auto '>
+                                                <a class="btn btn-danger w-100 btn-icon" wire:click="$emit('confirmDeletion' , {{ $user->id }} )" aria-label="Facebook">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                        <path d="M4 7l16 0"></path>
+                                                        <path d="M10 11l0 6"></path>
+                                                        <path d="M14 11l0 6"></path>
+                                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+                                                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+
+
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="card-footer d-flex align-items-center">
+                    </div>
+                    <div class="card-footer d-flex align-items-center">
 
-                            <ul class="pagination m-0 ms-auto">
-                                {{ $users->links() }}
-                            </ul>
-                        </div>
-
+                        <ul class="pagination m-0 ms-auto">
+                            {{ $users->links() }}
+                        </ul>
                     </div>
 
                 </div>
+
             </div>
         </div>
     </div>
+</div>
 </div>
 @section('scripts')
 <script>

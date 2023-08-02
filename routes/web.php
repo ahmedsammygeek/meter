@@ -12,6 +12,7 @@ use App\Http\Controllers\Board\CityController;
 use App\Http\Controllers\Board\MeterReplacementController;
 use App\Http\Controllers\Board\OtherReplacmentController;
 use App\Http\Controllers\Board\DistrictController;
+use App\Http\Controllers\Board\WorkerTaskController;
 Route::get('/' , function(){
 	return view('welcome');
 });
@@ -44,6 +45,11 @@ Route::group(['prefix' => 'Board' , 'as' => 'board.' , 'middleware' => 'admin' ]
 	Route::get('other_replacements' , [OtherReplacmentController::class , 'index'] )->name('other_replacements.index');
 	Route::get('other_replacements/{other_replacement}' , [OtherReplacmentController::class , 'show'] )->name('other_replacements.show');
 	Route::get('other_replacements/{other_replacement}/download' , [OtherReplacmentController::class , 'download'] )->name('other_replacements.download');
+
+	Route::get('workers/{worker}/tasks/create' , [WorkerTaskController::class , 'create'] )->name('workers.tasks.create');
+	Route::post('workers/{worker}/tasks' , [WorkerTaskController::class , 'store'] )->name('workers.tasks.store');
+	Route::get('workers/{worker}/tasks' , [WorkerTaskController::class , 'index'] )->name('workers.tasks.index');
+
 });
 
 

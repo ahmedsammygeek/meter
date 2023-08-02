@@ -25,8 +25,21 @@ use App\Http\Requests\Api\StoreMeterReplacementRequest;
 use App\Http\Requests\Api\StoreOtherReplacementRequest;
 use App\Http\Resources\Api\Home\UserTasksResource;
 use App\Http\Resources\Api\Home\UserDistrictResource;
+use Auth;
 class HomeController extends Controller
 {
+
+
+    public function logout(Request $request)
+    {
+        Auth::user()->tokens()->delete();
+        return response()->json([
+            'status' => true , 
+            'message' => 'تم تسجيل الخروج بنجاح' , 
+            'errors' => [] , 
+            'data' => (object) []            
+        ], 200 , 
+    }
 
     public function index(Request $request)
     {
@@ -48,7 +61,7 @@ class HomeController extends Controller
             'Charset' => 'utf-8' , 
         ],
         JSON_UNESCAPED_UNICODE
-         );
+    );
     }
 
     public function dropdowns()

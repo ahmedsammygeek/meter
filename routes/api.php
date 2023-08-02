@@ -31,7 +31,7 @@ Route::group(['prefix' => 'v1' , 'middleware' => 'treblle' ], function() {
        Route::post('/field_surveys' , [HomeController::class , 'field_surveys'] );
        Route::post('/meter_replacements' , [HomeController::class , 'meter_replacements'] );
        Route::post('/other_replacements' , [HomeController::class , 'other_replacements'] );
-
+       Route::post('logout' , [HomeController::class , 'logout']  );
     });
 
 

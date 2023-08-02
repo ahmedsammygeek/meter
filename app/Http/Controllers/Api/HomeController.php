@@ -25,7 +25,6 @@ use App\Http\Requests\Api\StoreMeterReplacementRequest;
 use App\Http\Requests\Api\StoreOtherReplacementRequest;
 use App\Http\Resources\Api\Home\UserTasksResource;
 use App\Http\Resources\Api\Home\UserDistrictResource;
-use Auth;
 class HomeController extends Controller
 {
 

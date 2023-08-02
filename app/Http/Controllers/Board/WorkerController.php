@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Board\Workers\UpdateWorkerRequest;
 use App\Http\Requests\Board\Workers\StoreWorkerRequest;
-
 use App\Models\User;
+use App\Models\UserDistrict;
 use Hash;
 use Auth;
 class WorkerController extends Controller
@@ -42,6 +42,16 @@ class WorkerController extends Controller
         $worker->user_id = Auth::id();
         $worker->is_active = $request->filled('active') ? 1 : 0;
         $worker->save();
+
+        $districts = [];
+        foreach ($request->districts as $one_district) {
+            $districts[] = new UserDistrict([
+                'user_id' => $worker->id , 
+                'district_id' => $one_district , 
+                'added_by' => Auth::id() , 
+            ]);
+        }
+        $worker->districts()->saveMany($districts);
         return redirect(route('board.workers.index'))->with('success' , 'تم إاضهف الموظف بنجاح' );
     }
 
@@ -75,6 +85,18 @@ class WorkerController extends Controller
         }
         $worker->is_active = $request->filled('active') ? 1 : 0;
         $worker->save();
+        $worker->districts()->delete();
+
+        $districts = [];
+        foreach ($request->districts as $one_district) {
+            $districts[] = new UserDistrict([
+                'user_id' => $worker->id , 
+                'district_id' => $one_district , 
+                'added_by' => Auth::id() , 
+            ]);
+        }
+        $worker->districts()->saveMany($districts);
+
         return redirect(route('board.workers.index'))->with('success' , 'تم تعديل بيانات الموظف بنجاح' );
     }
 

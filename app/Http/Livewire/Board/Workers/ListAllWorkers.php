@@ -45,7 +45,7 @@ class ListAllWorkers extends Component
         ->when($this->is_active != 'all' , function($query){
             $query->where('is_active' , $this->is_active );
         })
-        ->paginate(1);
+        ->paginate(30);
         return view('livewire.board.workers.list-all-workers' , compact('users'));
     }
 }

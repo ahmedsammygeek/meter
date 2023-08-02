@@ -50,6 +50,11 @@ class User extends Authenticatable
     }
 
 
+    public function districts()
+    {
+        return $this->hasMany(UserDistrict::class);
+    }
+
     protected function image(): Attribute
     {
         return Attribute::make(

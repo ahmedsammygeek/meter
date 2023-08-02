@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserDistrict extends Model
 {
     use HasFactory;
-
+    protected $fillable = ['user_id' , 'district_id' , 'added_by' ];
 
     public function user()
     {

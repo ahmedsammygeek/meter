@@ -88,6 +88,17 @@
                                         <input type="date" class='form-control' wire:model='ends_at' >    
                                     </div>
                                 </div>
+                                <div class="col-md-2">
+                                    <div class="form-group col-md-12">
+                                        <label class='form-label' for=""> نوع الاستبدال </label>
+                                        <select wire:model='type' class="form-select">
+                                            <option value="all" > الجميع </option>
+                                            <option value="1" > استبدال صندوق </option>
+                                            <option value="2" > استبدال محبس </option>
+                                            <option value="3" > استبدال حامى معدنى </option>
+                                        </select>
+                                    </div>
+                                </div>
 
                                 <div class="col-6 col-sm-4 col-md-2 col-xl-auto py-3">
 

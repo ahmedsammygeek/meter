@@ -26,7 +26,8 @@ class StoreWorkerRequest extends FormRequest
             'phone' => 'required|unique:users,phone' , 
             'email' => 'required|email|unique:users,email' , 
             'is_active' => 'nullable' , 
-            'password' => 'required|confirmed'  , 
+            'password' => 'required|confirmed',
+            'districts' => 'required',  
         ];
     }
 }

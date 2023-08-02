@@ -28,6 +28,7 @@ class UpdateWorkerRequest extends FormRequest
             'email' => 'required|email|unique:users,email,'.$id , 
             'is_active' => 'nullable' , 
             'password' => 'nullable|confirmed'  , 
+            'districts' => 'required' , 
         ];
     }
 }

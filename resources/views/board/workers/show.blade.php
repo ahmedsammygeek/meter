@@ -63,6 +63,16 @@
 									<th> رقم الجوال </th>
 									<td> {{ $worker->phone }} </td>
 								</tr>
+								<tr>
+									<th> الاحياء التابعه له </th>
+									<td>
+										<ul>
+											@foreach ($worker->districts as $work_district)
+												<li> {{ $work_district->district?->name }} </li>
+											@endforeach
+										</ul>
+									</td>
+								</tr>
 							</tbody>
 						</table>
 					</div>

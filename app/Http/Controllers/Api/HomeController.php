@@ -169,6 +169,7 @@ class HomeController extends Controller
         $OtherReplacement->current_meter_number = $request->current_meter_number;
         $OtherReplacement->current_meter_read = $request->current_meter_read;
         $OtherReplacement->user_id = Auth::id();
+        $OtherReplacement->type = $request->type;
         $OtherReplacement->save();
 
 

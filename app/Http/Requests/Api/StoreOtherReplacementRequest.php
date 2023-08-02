@@ -32,7 +32,8 @@ class StoreOtherReplacementRequest extends FormRequest
             'current_meter_number' => 'required' , 
             'current_meter_read' => 'required' , 
             'files' => 'nullable' , 
-            'files.*' => 'image'
+            'files.*' => 'image' , 
+            'type' => 'required' , 
         ];
     }
 

@@ -33,12 +33,12 @@ class HomeController extends Controller
     public function logout(Request $request)
     {
         Auth::user()->tokens()->delete();
-        return response()->json([
+        return response()->json([   
             'status' => true , 
             'message' => 'تم تسجيل الخروج بنجاح' , 
             'errors' => [] , 
-            'data' => (object) []            
-        ], 200 , 
+            'data' => (object) []    
+        ] , 200 );
     }
 
     public function index(Request $request)

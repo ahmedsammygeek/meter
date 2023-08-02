@@ -163,7 +163,7 @@
      </svg>
    </span>
    <span class="nav-link-title">
-    مهمات الاستبدال
+    مهمات استبدال العددادات
   </span>
 </a>
 </li> 
@@ -177,7 +177,7 @@
      </svg>
    </span>
    <span class="nav-link-title">
-     استبدال اخرى 
+     مهمات استبدال اخرى 
    </span>
  </a>
 </li>

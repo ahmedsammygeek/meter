@@ -21,6 +21,8 @@ class ListAllMeterReplacements extends Component
     public $city = 'all';
     public $district = 'all';
     public $meter_company = 'all';
+    public $starts_at;
+    public $ends_at;
 
 
     public function getAreasProperty()
@@ -111,6 +113,12 @@ class ListAllMeterReplacements extends Component
         })
         ->when($this->meter_company != 'all'  , function($query){
             $query->where('new_meter_company_id' , $this->meter_company );
+        })
+        ->when($this->starts_at, function($query){
+            $query->whereDate('created_at' , '>=' , $this->starts_at );
+        })
+        ->when($this->ends_at, function($query){
+            $query->whereDate('created_at' , '<=' , $this->ends_at );
         })
         ->latest();
     }

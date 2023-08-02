@@ -25,6 +25,8 @@ class ListAllFieldSurveys extends Component
     public $property_type = 'all';
     public $segment_type = 'all';
     public $meter_type = 'all';
+    public $starts_at;
+    public $ends_at;
 
 
     public function getAreasProperty()
@@ -132,7 +134,14 @@ class ListAllFieldSurveys extends Component
         })
         ->when($this->meter_type != 'all'  , function($query){
             $query->where('meter_type_id' , $this->meter_type );
-        })->latest();
+        })
+        ->when($this->starts_at, function($query){
+            $query->whereDate('created_at' , '>=' , $this->starts_at );
+        })
+        ->when($this->ends_at, function($query){
+            $query->whereDate('created_at' , '<=' , $this->ends_at );
+        })
+        ->latest();
     }
 
     public function render()

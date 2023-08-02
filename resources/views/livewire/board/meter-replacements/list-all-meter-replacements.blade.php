@@ -88,6 +88,18 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="col-md-2">
+                                    <div class="form-group col-md-12">
+                                        <label class='form-label' for=""> التاريخ (من) </label>
+                                        <input type="date" class='form-control' wire:model='starts_at' >
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group col-md-12">
+                                        <label class='form-label' for=""> التاريخ (الى) </label>
+                                        <input type="date" class='form-control' wire:model='ends_at' >    
+                                    </div>
+                                </div>
 
 
                                 <div class="col-6 col-sm-4 col-md-2 col-xl-auto py-3">

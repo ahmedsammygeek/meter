@@ -175,7 +175,7 @@
 									{{ $field_survey_count }}
 								</div>
 								<div class="text-muted">
-									 مهمات قراءه العدادات اليوم
+									  قراءه العدادات اليوم
 								</div>
 							</div>
 						</div>
@@ -200,7 +200,7 @@
 									{{ $meter_replacements_count }}
 								</div>
 								<div class="text-muted">
-									 مهمات استبدال العدادات اليوم
+									  استبدال العدادات اليوم
 								</div>
 							</div>
 						</div>
@@ -225,7 +225,7 @@
 									{{ $other_replacements_count }}
 								</div>
 								<div class="text-muted">
-									 مهمات الاستبال الاخرى اليوم
+									  الاستبال الاخرى اليوم
 								</div>
 							</div>
 						</div>

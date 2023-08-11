@@ -6,7 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use Hash;
+use Carbon\Carbon;
 use App\Models\User;
+use App\Models\District;
+use App\Models\City;
+use App\Models\Area;
+use App\Models\FieldSurvey;
+use App\Models\MeterReplacement;
+use App\Models\OtherReplacement;
 
 use App\Http\Requests\Board\UpdateProfileRequest;
 use App\Http\Requests\Board\UpdatePasswordRequest;
@@ -19,7 +26,15 @@ class BoardController extends Controller
     {
         $users_count = User::where('type' , 1 )->count();
         $workers_count = User::where('type' , 2 )->count();
-        return view('board.index' , compact('workers_count' , 'users_count' ) );
+        $districts_count = District::count();
+        $cities_count = City::count();
+        $areas_count = Area::count();
+
+        $field_survey_count = FieldSurvey::whereDate('created_at' , Carbon::today() )->count();
+        $meter_replacements_count = MeterReplacement::whereDate('created_at' , Carbon::today() )->count();
+        $other_replacements_count = OtherReplacement::whereDate('created_at' , Carbon::today() )->count();
+
+        return view('board.index' , compact('workers_count' , 'meter_replacements_count' , 'other_replacements_count'  , 'field_survey_count' , 'cities_count' , 'areas_count' , 'districts_count' , 'users_count' ) );
     }
 
     public function logout() {

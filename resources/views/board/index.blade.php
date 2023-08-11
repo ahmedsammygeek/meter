@@ -64,16 +64,24 @@
 					<div class="card-body">
 						<div class="row align-items-center">
 							<div class="col-auto">
-								<span class="bg-primary text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/currency-dollar -->
-									<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16.7 8a3 3 0 0 0 -2.7 -2h-4a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6h-4a3 3 0 0 1 -2.7 -2" /><path d="M12 3v3m0 12v3" /></svg>
+								<span class="bg-primary text-white avatar">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-current-location" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+										<path d="M12 12m-8 0a8 8 0 1 0 16 0a8 8 0 1 0 -16 0"></path>
+										<path d="M12 2l0 2"></path>
+										<path d="M12 20l0 2"></path>
+										<path d="M20 12l2 0"></path>
+										<path d="M2 12l2 0"></path>
+									</svg>
 								</span>
 							</div>
 							<div class="col">
 								<div class="font-weight-medium">
-									قريبا
+									{{ $areas_count }}
 								</div>
 								<div class="text-muted">
-									قريبا
+									عدد المنطاق داخل النظام
 								</div>
 							</div>
 						</div>
@@ -85,16 +93,139 @@
 					<div class="card-body">
 						<div class="row align-items-center">
 							<div class="col-auto">
-								<span class="bg-primary text-white avatar"><!-- Download SVG icon from http://tabler-icons.io/i/currency-dollar -->
-									<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M16.7 8a3 3 0 0 0 -2.7 -2h-4a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6h-4a3 3 0 0 1 -2.7 -2" /><path d="M12 3v3m0 12v3" /></svg>
+								<span class="bg-primary text-white avatar">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-current-location" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+										<path d="M12 12m-8 0a8 8 0 1 0 16 0a8 8 0 1 0 -16 0"></path>
+										<path d="M12 2l0 2"></path>
+										<path d="M12 20l0 2"></path>
+										<path d="M20 12l2 0"></path>
+										<path d="M2 12l2 0"></path>
+									</svg>
 								</span>
 							</div>
 							<div class="col">
 								<div class="font-weight-medium">
-									قريبا
+									{{ $cities_count }}
 								</div>
 								<div class="text-muted">
-									قريبا
+									عدد المدن داخل النظام
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="row mt-2">
+			<div class="col-md-6 col-xl-3">
+				<div class="card card-sm">
+					<div class="card-body">
+						<div class="row align-items-center">
+							<div class="col-auto">
+								<span class="bg-primary text-white avatar">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-current-location" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+										<path d="M12 12m-8 0a8 8 0 1 0 16 0a8 8 0 1 0 -16 0"></path>
+										<path d="M12 2l0 2"></path>
+										<path d="M12 20l0 2"></path>
+										<path d="M20 12l2 0"></path>
+										<path d="M2 12l2 0"></path>
+									</svg>
+								</span>
+							</div>
+							<div class="col">
+								<div class="font-weight-medium">
+									{{ $districts_count }}
+								</div>
+								<div class="text-muted">
+									عدد الاحياء داخل النظام
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row mt-2">
+			<div class="col-md-6 col-xl-4">
+				<div class="card card-sm">
+					<div class="card-body">
+						<div class="row align-items-center">
+							<div class="col-auto">
+								<span class="bg-primary text-white avatar">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calculator" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<path d="M4 3m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+										<path d="M8 7m0 1a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1v1a1 1 0 0 1 -1 1h-6a1 1 0 0 1 -1 -1z"></path>
+										<path d="M8 14l0 .01"></path>
+										<path d="M12 14l0 .01"></path>
+										<path d="M16 14l0 .01"></path>
+										<path d="M8 17l0 .01"></path>
+										<path d="M12 17l0 .01"></path>
+										<path d="M16 17l0 .01"></path>
+									</svg>
+								</span>
+							</div>
+							<div class="col">
+								<div class="font-weight-medium">
+									{{ $field_survey_count }}
+								</div>
+								<div class="text-muted">
+									 مهمات قراءه العدادات اليوم
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-xl-4">
+				<div class="card card-sm">
+					<div class="card-body">
+						<div class="row align-items-center">
+							<div class="col-auto">
+								<span class="bg-primary text-white avatar">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-repeat" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<path d="M4 12v-3a3 3 0 0 1 3 -3h13m-3 -3l3 3l-3 3"></path>
+										<path d="M20 12v3a3 3 0 0 1 -3 3h-13m3 3l-3 -3l3 -3"></path>
+									</svg>
+								</span>
+							</div>
+							<div class="col">
+								<div class="font-weight-medium">
+									{{ $meter_replacements_count }}
+								</div>
+								<div class="text-muted">
+									 مهمات استبدال العدادات اليوم
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6 col-xl-4">
+				<div class="card card-sm">
+					<div class="card-body">
+						<div class="row align-items-center">
+							<div class="col-auto">
+								<span class="bg-primary text-white avatar">
+									<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-repeat" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+										<path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+										<path d="M4 12v-3a3 3 0 0 1 3 -3h13m-3 -3l3 3l-3 3"></path>
+										<path d="M20 12v3a3 3 0 0 1 -3 3h-13m3 3l-3 -3l3 -3"></path>
+									</svg>
+								</span>
+							</div>
+							<div class="col">
+								<div class="font-weight-medium">
+									{{ $other_replacements_count }}
+								</div>
+								<div class="text-muted">
+									 مهمات الاستبال الاخرى اليوم
 								</div>
 							</div>
 						</div>

@@ -9,7 +9,7 @@ use App\Models\Area;
 use App\Models\City;
 use Livewire\WithPagination;
 use Excel;
-use App\Exports\ExportMeterReplacmentExcel;
+use App\Exports\ExportMeterOtherReplacement;
 class ListAllOtherReplacments extends Component
 {
     use WithPagination;
@@ -74,8 +74,8 @@ class ListAllOtherReplacments extends Component
 
     public function ExportExcelSheet()
     {
-        $MeterReplacements =  $this->generateQuery();
-        return Excel::download(new ExportMeterReplacmentExcel($MeterReplacements) , 'MeterReplacements.xlsx' );
+        $OtherReplacements =  $this->generateQuery();
+        return Excel::download(new ExportMeterOtherReplacement($OtherReplacements) , 'OtherReplacements.xlsx' );
     }
 
 

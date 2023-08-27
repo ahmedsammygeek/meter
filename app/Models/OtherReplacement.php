@@ -10,11 +10,28 @@ class OtherReplacement extends Model
     use HasFactory;
 
 
-     public function user()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
+    public function typeAsText()
+    {
+        switch ($this->type) {
+            case 1:
+            return 'استبدال صندوق';
+            break;
+            case 2:
+            return 'استبدال محبس';
+            break;
+            case 3:
+            return 'استبدال حامى معدنى';
+            break;
+            default:
+            return 'غير محدد';
+            break;
+        }
+    }
 
     public function district()
     {

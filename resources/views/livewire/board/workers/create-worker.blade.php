@@ -71,7 +71,7 @@
             <div class="mb-3">
                 <div class="form-group col-md-12">
                     <label class='form-label' for=""> المنطقه </label>
-                    <select wire:model='area' class="form-select">
+                    <select wire:model='area' name='area' class="form-select">
                         <option value="all" > جميع المناطق </option>
                         @foreach ($this->areas as $one_area)
                         <option value='{{ $one_area->id }}' > {{ $one_area->name }} </option>
@@ -82,7 +82,7 @@
             <div class="mb-3">
                 <div class="form-group col-md-12">
                     <label class='form-label' for=""> المدينه </label>
-                    <select wire:model='city' class="form-select">
+                    <select wire:model='city' name='city' class="form-select">
                         <option value="all" > جميع المدن </option>
                         @foreach ($this->cities as $one_city)
                         <option value='{{ $one_city->id }}' > {{ $one_city->name }} </option>
@@ -95,7 +95,7 @@
                     <label class='form-label' for=""> الاحياء </label>
                     <select name='districts[]' multiple="" class="form-select">
                         @foreach ($this->districts as $one_district)
-                        <option value='{{ $one_district->id }}' > {{ $one_district->name }} </option>
+                        <option value='{{ $one_district->id }}' {{ $this->area == 'all' ? 'selected="selected"' : '' }} > {{ $one_district->name }} </option>
                         @endforeach
                     </select>
                     @error('districts')

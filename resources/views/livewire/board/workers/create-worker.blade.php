@@ -83,7 +83,6 @@
                 <div class="form-group col-md-12">
                     <label class='form-label' for=""> المدينه </label>
                     <select wire:model='city' name='city' class="form-select">
-                        <option value="all" > جميع المدن </option>
                         @foreach ($this->cities as $one_city)
                         <option value='{{ $one_city->id }}' > {{ $one_city->name }} </option>
                         @endforeach

@@ -30,10 +30,10 @@ class CreateWorker extends Component
 
     public function getDistrictsProperty()
     {
-        if ($this->city != 'all') {
-            return District::where('city_id' , $this->city )->get();
-        } 
-        return District::get();
+        if ($this->area == 'all' ) {
+            return District::get();
+        }
+        return District::where('city_id' , $this->city )->get();
     }
 
 

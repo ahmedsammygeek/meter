@@ -38,7 +38,7 @@
 <div class="page-body">
 	<div class="container-xl">
 		<div class="row row-deck row-cards">
-				@livewire('board.workers.create-worker')
+			@livewire('board.workers.create-worker')
 		</div>
 	</div>
 </div>

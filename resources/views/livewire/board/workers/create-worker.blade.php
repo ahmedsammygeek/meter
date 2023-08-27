@@ -98,6 +98,9 @@
                         <option value='{{ $one_district->id }}' > {{ $one_district->name }} </option>
                         @endforeach
                     </select>
+                    @error('districts')
+                    <small class="form-hint text-danger"> {{ $message }} </small>
+                    @enderror
                 </div>
             </div>
         </div>

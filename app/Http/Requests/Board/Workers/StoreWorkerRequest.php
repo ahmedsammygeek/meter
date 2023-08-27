@@ -30,4 +30,19 @@ class StoreWorkerRequest extends FormRequest
             'districts' => 'required',  
         ];
     }
+
+    public function messages() {
+
+        return [
+            'name.required' => 'الاسم مطلوب' , 
+            'phone.required' => 'رقم الموبيل مطلوب' , 
+            'email.required' => 'البريد مطلوب' , 
+            'password.required' => 'كلمه المرور مطلوبه' , 
+            'districts.required' => 'الاحياء مطلوبه' , 
+            'password.confirmed' => 'كلمه المرور غير متطابقه' , 
+            'phone.unique' => 'رقم الموبيل موجود بالفعل' , 
+            'email.unique' => 'البريد موجود بالفعل' , 
+            'email.email' => 'البريد غير صحيح..تاكد منه برجاءا' , 
+        ];
+    }
 }

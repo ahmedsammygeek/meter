@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
             // DistrictSeeder::class , 
             // TaskSeeder::class , 
             // UserTaskSeeder::class , 
-            // MeterTypeSeeder::class , 
+            MeterTypeSeeder::class , 
             // PropertyTypeSeeder::class , 
-            SegmentTypeSeeder::class , 
+            // SegmentTypeSeeder::class , 
         ]);
     }
 }
